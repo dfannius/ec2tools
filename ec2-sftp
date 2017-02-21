@@ -1,0 +1,9 @@
+#!/usr/bin/python
+
+import subprocess
+from ec2util import *
+
+run_cmd( "sftp -i {} {}@{}".format( pem_file(), read_user(), read_ip() ) )
+
+# With private IP this just becomes:
+# sftp ${EC2_USER}@${EC2_IP}

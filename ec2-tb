@@ -1,0 +1,5 @@
+#!/usr/bin/python
+
+from ec2util import *
+
+run_cmd( '/usr/bin/open -a "/Applications/Google Chrome.app" http://{}:6006'.format( read_ip() ) )

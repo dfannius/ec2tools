@@ -1,0 +1,5 @@
+#!/usr/bin/python
+
+from ec2util import *
+
+run_cmd ( "ssh -i {} -L 6006:127.0.0.1:6006 {}@{}".format( pem_file(), read_user(), read_ip() ) )

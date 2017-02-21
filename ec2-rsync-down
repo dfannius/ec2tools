@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+from ec2util import *
+
+# -r: recursive
+# -v: verbose
+# -u: only update files that are are newer on the source
+# -t: preserve times
+
+cmd = 'rsync -r -v -u -t --exclude=.git -e "ssh -i {}" {}@{}:{} {}'.format(
+    pem_file(), read_user(), read_ip(), read_remote_dir(), read_local_dir()
+)
+run_cmd( cmd )
+
+# With private IP this just becomes:
+# rsync -r -v -u -t --exclude=.git -e ssh ${EC2_USER}@${EC2_IP}:~/prj/tense/ ~/analog/tense/

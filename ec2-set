@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import argparse
+from ec2util import *
+
+parser = argparse.ArgumentParser()
+parser.add_argument( "ip", help="IP address of EC2 instance" )
+parser.add_argument( "-u", "--user", default="ubuntu",
+                     help="remote username (typically ec2-user or ubuntu)" )
+
+args = parser.parse_args()
+
+write_ip( args.ip )
+write_user( args.user )
+
+print "{}@{}".format( args.user, args.ip )
